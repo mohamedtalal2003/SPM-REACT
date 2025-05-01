@@ -1,0 +1,25 @@
+.RightUpSideBar{
+    width: 100%;
+    grid-row: span 1;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+
+ }
+ .RightUpSideBar button{
+    width: 60%;
+    height: 60%;
+    background-color: grey;
+    border-radius:5px ;
+    border: grey 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left:  35px;
+ }
+ .dropdownlist{
+
+ }
+ .dropdownlist li{
+   
+ }

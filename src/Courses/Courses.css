@@ -1,0 +1,34 @@
+
+
+.courses{
+    grid-row: span 9;
+    grid-column:  span 2 ;
+    display: flex;
+    flex-direction: column;
+}
+.Box{
+    width: 10%;
+    height: 70%;
+    margin: 0 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px ;
+    background-image: linear-gradient(to  left, #450129 , #10062B);
+}
+.Box p{
+    font-size: small;
+    margin: 0;
+    text-align: center;
+}
+.BoxContinar{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    height: 20%;
+}
+.courses .theList{
+    height: 80%;
+}

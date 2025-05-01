@@ -1,0 +1,167 @@
+
+.RightUpSide{
+    grid-column: span 2;
+    grid-row: span 3;
+    background-color: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: flex-start;
+ }
+
+
+
+.InfoCardsContiner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: span 2;
+    grid-row: span 3;
+    background-color: #e9ecef;
+
+ } 
+ .InfoCard{
+    width: 25%;
+    border-radius: 16px;
+    background-image: linear-gradient(to bottom right, #10062B , #450129);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: all 2s;
+    height: 75%;
+    
+ }
+ .InfoCard:hover{
+    background-image: linear-gradient(to  right, #450129 , #10062B);
+ }
+
+ .InfoCard *{
+    margin: 0 0 0 10%;
+
+ }
+ .InfoCard a{
+    margin-top: 10%;
+    color: blue!important;
+ }
+ .theList{
+    grid-row: span 6;
+    grid-column:  span 2 ;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9ecef;
+
+ }
+ .theList button{
+    width: 10%;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+ .theList i{
+    margin-right: 5px;
+ }
+ .ControlOfTheList{
+    width: 90%;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+    margin:10px 0;
+    gap: 1.5%;
+ }
+ .Thetable{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height:90%;
+    width: 90%;
+    border-radius: 10px;
+
+    overflow: scroll;
+    background-color: white;
+ }
+ .Thetable p{
+    margin: 0;
+ }
+ .cheakboxclass{
+    display: flex;
+    align-items: center;
+ }
+ .cheakboxclass input{
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+ }
+ .rowoftable{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+ }
+ .searchbar{
+      border-radius: 10px;
+    background-color: gray;
+    display: flex;
+ }
+ .searchbar input{
+    background-color: gray;
+    border-radius: 10px;
+    border: gray 0px;
+ }
+ .Thetableofcourses{
+    width: 100%;
+ }
+ .Thetableofcourses .rowoftable{
+    font-size: 12px;
+ }
+ .theListofcourses button{
+    width: 20%;
+ }
+.LessonsContainer{
+   grid-row: span 6;
+   grid-column:  span 2 ;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-around;
+   font-family: Arial sans-serif;
+}
+.LessonCard {
+     background: #fff;
+     border-radius: 12px;
+     padding: 20px;
+     width: 70%;
+     margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+     transition: 0.3s ease;
+   }
+   .LessonHeader {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+   .LessonToggleBtn {
+     font-size: 20px;
+     background:none;
+     border: none;
+     cursor: pointer;
+     transition: transform 0.2s ease;
+   }
+   .LessonBody {
+     margin-top: 15px;
+   }
+   .LessonAnnounceBtn {
+     margin-top: 10px;
+     background-color: #0a53e4;
+     color: white;
+     border: none;
+     padding: 10px 15px;
+     border-radius: 6px;
+     cursor: pointer;
+   };
+ 

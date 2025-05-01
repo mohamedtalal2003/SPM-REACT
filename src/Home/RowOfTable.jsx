@@ -1,0 +1,22 @@
+import React from 'react'
+import 'C:/Users/lolo/Documents/SPM-REACT/spm/src/Home/Home.css'
+function RowOfTable(props) {
+  return (
+    
+
+    <div className="rowoftable" id="rowoftable">
+    <div className="cheakboxclass">
+
+      <input type="checkbox" value={props.CourseId} onChange={props.handleCheckboxChange} checked={props.selectedIds.includes(props.CourseId)} />
+      <p>{props.courseCode}</p>
+    </div>
+    <p className="courseName">{props.courseName}</p>
+    <p className="courseInstructor">{props.courseInstructor}</p>
+    <time dateTime="2025-04-20">April 20, 2025</time>
+    <time dateTime="10:00">10:00 AM</time>
+    <p className="ClassRooms">{props.courseRoom}</p>
+  </div>
+  )
+}
+
+export default RowOfTable

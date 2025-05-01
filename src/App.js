@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './Layout'; // contains Sidenav and Navbar
+import Home from './Home/Home';
+import Courses from './Courses/Courses';
+import All from './Courses/All';
+import AnnouncedCourses from './Courses/AnnouncedCourses'
+import UnannouncedCourses from './Courses/UnannouncedCourses';
+import Departments from './Departments/Departments';
+import HomeForInstructor from './HomeForInstructor/HomeForInstructor';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+         <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />}>
+              <Route index  element={<All/>} />
+              <Route path="AnnouncedCourses" element={<AnnouncedCourses/>} />
+              <Route path="UnannouncedCourses" element={<UnannouncedCourses/>} />
+          </Route>
+          <Route path='/Departments' element={<Departments/>}/>
+          <Route path='/inst' element={<HomeForInstructor/>}/>
+        </Route> 
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
