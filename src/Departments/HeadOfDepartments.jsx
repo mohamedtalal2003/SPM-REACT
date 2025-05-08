@@ -6,10 +6,13 @@ import 'C:/Users/lolo/Documents/SPM-REACT/spm/src/Departments/Departments.css'
 function HeadOfDepartments() {
   return (
     <div className='HeadOfDepartments'>
-        <h1>Faculty</h1>
+        <h3 style={{fontFamily:'fantasy'}}>Faculty</h3>
         <div className='HeadOfDepartmentsBtns'>
            <SearchBar/>
-           <Btn/>
+          <button class="btn btn-secondary rounded-2">
+               <i class="bi bi-pencil"></i>
+              <p> Add new department</p>
+        </button>
         </div>
     </div>
   )

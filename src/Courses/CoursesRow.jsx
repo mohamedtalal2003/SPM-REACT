@@ -14,7 +14,7 @@ export default function CoursesRow() {
     <p className="classNameRooms">className rome</p>
     <time datetime="2025-04-20">April 20, 2025</time>
     <p>announcd</p>
-    <i className="bi bi-trash3-fill"></i>
+    <i className="bi bi-pencil-square"></i>
     <i className="bi bi-trash3-fill"></i>
 </div>
 

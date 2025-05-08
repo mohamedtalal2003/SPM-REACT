@@ -5,26 +5,26 @@ import SearchBar from '../Btns/SearchBar'
 
 export default function All() {
   return (
-    <div class="theList   theListofcourses right ">
-    <nav class="ControlOfTheList">     
-    <button class="btn btn-danger rounded-2">
-    <i class="bi bi-trash-fill me-2"></i>
+    <div className="theList   theListofcourses right ">
+    <nav className="ControlOfTheList">     
+    <button  className="btn btn-danger rounded-1">
+    <i className="bi bi-trash-fill me-2"></i>
     Button
     </button>
-    <button class="btn btn-secondary rounded-2">
-    <i class="bi bi-filter"></i>
-    Button
+    <button style={{width:'10%'}} className="btn btn-secondary rounded-1">
+    <i className="bi bi-filter"></i>
+    filter
     </button>
     <SearchBar/>
 
-    <button class="btn btn-secondary rounded-2">
-    <i class="bi bi-pencil-square"></i>
+    <button style={{position:'absolute',right:'0'}} className="btn btn-secondary rounded-1">
+    <i className="bi bi-pencil-square"></i>
 
     Button
     </button>
                 
     </nav>
-    <div class="Thetable Thetableofcourses" id="Thetable">
+    <div className="Thetable Thetableofcourses" id="Thetable">
         <CoursesRow/>
 
     </div>

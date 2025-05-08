@@ -14,7 +14,7 @@ function Sidenav() {
     <ul>
       <li>
         <i className="bi bi-grid-fill"></i>
-        <Link to="/" >Home</Link>
+        <Link to="/home" >Home</Link>
       </li>
       <li>
         <i className="bi bi-mortarboard-fill"></i>
@@ -27,10 +27,10 @@ function Sidenav() {
 
     </ul>
     <div className="logoutdiv">
-      <a href="*">
+      <Link to="/">
         <img src={LogoOut} alt="Logout Icon" />
         <p style={{ margin: 0 }}>log out</p>
-      </a>
+      </Link>
     </div>
   </nav>
   )

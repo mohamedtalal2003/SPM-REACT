@@ -10,11 +10,9 @@ function RowOfTable(props) {
       <input type="checkbox" value={props.CourseId} onChange={props.handleCheckboxChange} checked={props.selectedIds.includes(props.CourseId)} />
       <p>{props.courseCode}</p>
     </div>
-    <p className="courseName">{props.courseName}</p>
-    <p className="courseInstructor">{props.courseInstructor}</p>
-    <time dateTime="2025-04-20">April 20, 2025</time>
-    <time dateTime="10:00">10:00 AM</time>
-    <p className="ClassRooms">{props.courseRoom}</p>
+    <p className="courseName">{props.Name}</p>
+    <p className="courseInstructor">{props.Grade}</p>
+    <p className="ClassRooms">{props.Letter}</p>
   </div>
   )
 }

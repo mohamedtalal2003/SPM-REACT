@@ -14,15 +14,19 @@ function SidenavForInstructor() {
     <ul>
       <li>
         <i className="bi bi-grid-fill"></i>
-        <Link to="/" >Home</Link>
+        <Link to="/instructor" >Home</Link>
       </li>
       <li>
-        <i className="bi bi-mortarboard-fill"></i>
-        <Link to="/courses" >Courses</Link>
+      <i className="bi bi-circle"></i><span style={{position:'relative',left:'-15px'}}>A+</span>
+        <Link to="/lettergrades" >Letter Grade</Link>
       </li>
       <li>
         <i className="bi bi-clipboard-check"></i>
-        <Link to="/Departments" >Depertment</Link>
+        <Link to="/Departments" >Approvel</Link>
+      </li>
+      <li>
+        <i className="bi bi-clipboard-check"></i>
+        <Link to="/Inbox" >Inbox</Link>
       </li>
 
     </ul>

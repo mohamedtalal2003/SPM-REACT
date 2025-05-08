@@ -1,15 +1,18 @@
 .RightUpSideBar{
     width: 100%;
     grid-row: span 1;
-    grid-column: span 2;
+    grid-column: span 3;
+    width: 100%;
     display: flex;
     align-items: center;
+    /* background-color: #E9ECEF; */
+    background-color: #e5e5e7;
 
  }
  .RightUpSideBar button{
     width: 60%;
     height: 60%;
-    background-color: grey;
+    background-color: #dddfe0;
     border-radius:5px ;
     border: grey 0px;
     display: flex;

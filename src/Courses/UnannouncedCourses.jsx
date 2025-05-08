@@ -14,6 +14,14 @@ function UnannouncedCourses() {
     <i class="bi bi-filter"></i>
     Button
     </button>
+    <button style={{backgroundColor:'#090029'}} className="btn btn-secondary rounded-1">
+        <i class="bi bi-upload"></i>
+          Upload file
+        </button>
+        <button style={{backgroundColor:'#2b1e1b'}} className="btn btn-secondary rounded-1">
+        <i class="bi bi-pencil-square"></i>
+          Add Manulay
+        </button>
     <SearchBar/>
 
     <button class="btn btn-secondary rounded-2">

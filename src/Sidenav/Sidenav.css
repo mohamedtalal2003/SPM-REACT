@@ -1,6 +1,7 @@
 #SideNav{
     grid-row: span 10;
     grid-column: span 1 ;
+    width: 100%;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,9 @@
     transition: all 1s linear;
 
 }
-
+#SideNav a{
+  color: #fff;
+}
 .upperOfSideNav{
     width: 100%;
     height: 20%;
@@ -41,7 +44,11 @@
   .sidebar ul {
     list-style: none;
     padding: 0;
+    height: 30%;
+    display: flex;
     margin: 0;
+    flex-direction: column;
+    justify-content: space-around;
   }
   
   .sidebar li {

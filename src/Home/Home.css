@@ -9,15 +9,24 @@
     height: 100%;
     align-items: flex-start;
  }
-
+ #root {
+   display: grid;
+   grid-template-columns: 15% 1fr 1fr 10%;
+   grid-template-rows: repeat(10,1fr);
+   height: 100vh;
+   width: 100vw;
+   margin: 0;
+   transition: all 1s linear;
+   }
 
 
 .InfoCardsContiner{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    grid-column: span 2;
-    grid-row: span 3;
+    grid-column: span 3;
+    grid-row: span 2;
+    width: 100%;
     background-color: #e9ecef;
 
  } 
@@ -30,7 +39,7 @@
     flex-direction: column;
     justify-content: space-around;
     transition: all 2s;
-    height: 75%;
+    height: 90%;
     
  }
  .InfoCard:hover{
@@ -47,18 +56,20 @@
  }
  .theList{
     grid-row: span 6;
-    grid-column:  span 2 ;
+    grid-column:  span 3 ;
+    width: 100%;
     padding: 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #e9ecef;
-
+    margin-top: 25px;
  }
  .theList button{
-   width: 15%;
-    font-size: 7px;
+   width: 30%;
+   height: 35px;
+    font-size:7px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -66,6 +77,7 @@
  }
  .theList i{
     margin-right: 5px;
+    font-size: 15px;
  }
  .ControlOfTheList{
     width: 90%;
@@ -82,8 +94,8 @@
     height:90%;
     width: 90%;
     border-radius: 10px;
-
-    overflow: scroll;
+   margin-top: 10px;
+     overflow: scroll;
     background-color: white;
  }
  .Thetable p{
@@ -96,7 +108,7 @@
  .cheakboxclass input{
     width: 15px;
     height: 15px;
-    margin-right: 10px;
+    margin:  0 10px 0 0; 
  }
  .rowoftable{
     display: flex;
@@ -105,14 +117,17 @@
     margin-top: 10px;
  }
  .searchbar{
-      border-radius: 10px;
-    background-color: gray;
+      border-radius: 3px;
+    background-color: lightgrey;
     display: flex;
+    box-shadow: gray 3px 2px 5px;
  }
  .searchbar input{
-    background-color: gray;
+    background-color: lightgrey;
     border-radius: 10px;
-    border: gray 0px;
+    height: 25px;
+    border: #e5e5e7 0px;
+    margin: 0;
  }
  .Thetableofcourses{
     width: 100%;
@@ -122,4 +137,46 @@
  }
  .theListofcourses button{
     width: 20%;
+ }
+ .AddManulay{
+   display: none;
+   
+   grid-template-columns: repeat(4,1fr);
+   grid-template-rows:  repeat(10,1fr);
+   position: absolute;
+   width: 60%;
+   background-color: #fdfcfc;
+   color: #000;
+   border-radius: 10px;
+   border: solid 0px #e9ecef;
+   box-shadow: #000000 -1px 1px 5px 0px;
+   padding: 0 20px;
+   justify-items: center;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+ }
+ .AddManulay h6{
+   grid-row: 1;
+   grid-column: span 4;
+   text-align: center;
+ }
+ .AddManulay label{
+   grid-column: span 1;
+   grid-row: span 1;
+   left: 0;
+   text-align: left;
+   width: 70%;
+ }
+ .AddManulay input{
+   grid-column: span 3;
+   grid-row: span 1;
+   width: 85%;
+ }
+ .AddManulay button{
+   grid-column: span 2;
+   grid-row: span 1;
+   width: 80%;
+
+   background-color: red;
+   border-radius: 5px;
+   border: solid 0px red;
  }

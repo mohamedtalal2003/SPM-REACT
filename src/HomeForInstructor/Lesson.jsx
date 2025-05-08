@@ -25,8 +25,10 @@ function Lesson(props) {
     {isOpen && hasDetails && (
       <div className='LessonBody'>
         <p><strong>Date:</strong> {props.Lesson.date} &nbsp; <strong>Time:</strong> {props.Lesson.time}</p>
+        <div style={{display:'flex',justifyContent:'space-around'}}>
         <p><strong>Classrooms:</strong> {props.Lesson.classrooms.join(', ')}</p>
         <button className='LessonAnnounceBtn' >📢 Announce Exam Details</button>
+        </div>
       </div>
     )}
   </div>

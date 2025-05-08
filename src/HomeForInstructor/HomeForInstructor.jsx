@@ -1,6 +1,7 @@
 import React from 'react'
 import InfoCard from './InfoCard'
 import Lesson from './Lesson'
+import SidenavOfHomeInstructor from './SidenavOfHomeInstructor'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'C:/Users/lolo/Documents/SPM-REACT/spm/src/HomeForInstructor/HomeForIstructor.css'
 import 'C:/Users/lolo/Documents/SPM-REACT/spm/src/Home/Home.css'
@@ -33,7 +34,7 @@ function HomeForInstructor() {
   return (
     <>
 
-      <div className="InfoCardsContiner">
+      <div className="InfoCardsContiner  InfoCardsContinerInstructor">
         <InfoCard link="/courses" title="All courses" number="23"/>
         <InfoCard link="/courses/AnnouncedCourses" title="unannounsed Courses" number="1"/>
         <InfoCard link="/courses/UnannouncedCourses" title="All Depertment" number="15"/>
@@ -47,6 +48,8 @@ function HomeForInstructor() {
       ))}
     </div>
     </section>
+    
+    <SidenavOfHomeInstructor/>
     </>
   )
 }

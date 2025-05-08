@@ -7,6 +7,12 @@ export default function Faculty() {
         <Box text='Faculty of communction' link  />
         <Box text='Faculty of communction' link  />
         <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
+        <Box text='Faculty of communction' link  />
     </section>
   )
 }

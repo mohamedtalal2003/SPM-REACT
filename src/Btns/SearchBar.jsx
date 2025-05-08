@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function SearchBar() {
   return (
-    <div class="searchbar">
+    <div className="searchbar">
     <input type="search"  />
-    <i class="bi bi-search"></i>
+    <i className="bi bi-search"></i>
     </div>
   )
 }
