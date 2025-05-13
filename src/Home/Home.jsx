@@ -5,18 +5,23 @@ import { useState,useEffect } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'C:/Users/lolo/Documents/SPM-REACT/spm/src/Home/Home.css'
 import axios from 'axios';
+import SearchBar from '../Btns/SearchBar';
 
-const Items = [
-  { CourseId: '1', courseName: 'Item 1',resitExamId:'courseCode1',courseInstructor:'instructor',courseRoom:'A212', },
-  { CourseId: '2', courseName: 'Item 2',resitExamId:'courseCode2',courseInstructor:'instructor',courseRoom:'A212', },
-  { CourseId: '3', courseName: 'Item 3',resitExamId:'courseCode3',courseInstructor:'instructor',courseRoom:'A212', },
-]
+
 
 export default function Home() {
   const [selectedIds, setSelectedIds] = useState([]);
-
+  const [coursesListData, setCoursesListData] = useState([]);
+  const [Addmanualyopener, setAddmanualyopener] = useState(false);
+  const [resitExamIdList, setResitExamIdList] = useState([]);
+   const [CourseCode, setCourseCode] = useState('');
+   const [CourseName, setCourseName] = useState('');
+    const [Department, setDepartment] = useState('');
+    const [Instructor, setInstructor] = useState('');
+    const [onSearchResult, setOnSearchResult] = useState('');
     const handleCheckboxChange = (event) => {
       const id = event.target.value;
+      console.log(id)
       if (event.target.checked) {
         // Add id
         setSelectedIds((prev) => [...prev, id]);
@@ -26,31 +31,78 @@ export default function Home() {
       }
 
     };
-  const [CoursesData, setCoursesData] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/secretary/courses')
+    const GetFunc=()=>{
+      axios.get('http://localhost:3000/secretary/courses')
       .then(response => {
-        console.log(response.data)
-        setCoursesData(response.data);
+        // console.log(response.data)
+        setCoursesListData(response.data);
+        GetResitIdFunc();
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       }) ;
+    }
+   function splitDateTime(isoString) {
+    const [date, timeWithZ] = isoString.split('T');
+    const time = timeWithZ.replace('Z', '');
+    return { date, time };
+  }
+
+    const DeleteFunc=()=>{
+      selectedIds.forEach((id) => {
+        console.log(id)
+        if (id) { 
+          axios.delete(`http://localhost:3000/course/${id}`, {
+            data: {
+              secretaryId: 'sec-001'
+            }
+          })
+          .then(() => {
+            GetFunc(); // Refresh the data after deletion
+          })
+          .catch(error => {
+            console.error(`Error deleting data for id ${id}:`, error);
+          });
+        } else {
+          console.error('Invalid id detected:', id);
+        }
+      });
+      setSelectedIds([]);
+    }
+
+    const FuncPost=()=>{
+      axios.post('http://localhost:3000/course', {
+        courseId :CourseCode,
+        name: CourseName,
+        resitExamId: CourseCode,
+        department: Department,
+        instructor: Instructor,
+        secretaryId: "sec-001",
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    }
+    const GetResitIdFunc=()=>{
+      axios.get('http://localhost:3000/secretary/resit-exams')
+      .then(response => {
+        // console.log(response.data)
+        setResitExamIdList(response.data);
+
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      }) ;
+    }
+  useEffect(() => {   // Fetch data when the component mounts
+    GetFunc();
   }, []);
    
-    // let id;
-    // for (item in selectedIds) {
-    //   id =item.id
-    //   axios.delete(`http://localhost:3000/secretary/courses/${id}`)
-    //   .then(response => {
-    //     setCoursesData(response.data);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching data:', error);
-    //   });
-      
-    // }
+
+
   return (
     <>
 
@@ -71,7 +123,7 @@ export default function Home() {
           <i className="bi bi-filetype-xlsx"></i>
           Export as Exel
         </button>
-        <button className="btn btn-danger rounded-1">
+        <button onClick={()=>DeleteFunc()} className="btn btn-danger rounded-1">
           <i className="bi bi-trash-fill me-2"></i>
           Delete
         </button>
@@ -79,30 +131,77 @@ export default function Home() {
           <i className="bi bi-filter"></i>
           Filter
         </button>
-        <div className="searchbar">
+        {/* <div className="searchbar">
           <input type="search" />
           <i className="bi bi-search"></i>
-        </div>
+        </div> */}
+        <SearchBar List={coursesListData} onSearchResult={setOnSearchResult}/>
 
         <button style={{backgroundColor:'#090029'}} className="btn btn-secondary rounded-1">
         <i className="bi bi-upload"></i>
           Upload file
         </button>
-        <button style={{backgroundColor:'#2b1e1b'}} className="btn btn-secondary rounded-1">
+        <button style={{backgroundColor:'#2b1e1b'}} type='button'  onClick={()=>setAddmanualyopener(true)} className="btn btn-secondary rounded-1">
         <i className="bi bi-pencil-square"></i>
           Add Manulay
         </button>
       </nav>
 
       <div className="Thetable" id="Thetable">
-        
-      {Items.map((item) => (
+        {/*       <div className="Thetable" id="Thetable">
+          {(onSearchResult || coursesListData).map((item) => (
+            <RowOfTable
+              key={`${item.id}-${item.resitExamId}`}
+              CourseId={item.id}
+              courseName={item.name}
+              courseInstructor={item.instructor}
+              ExamDate={(() => {
+                const examDate = resitExamIdList.find((resit) => resit.id === item.resitExamId)?.examDate || 'N/A';
+                if (examDate !== 'N/A') {
+                  const { date, time } = splitDateTime(examDate);
+                  return { date, time };
+                }
+                return { date: 'N/A', time: 'N/A' };
+              })()}
+              sendSplitDateTime={(dateTime) => console.log('Received split date and time:', dateTime)} // Example of sending back the result
+              courseRoom={"N/A"} // Assuming no room is given; replace as needed
+              selectedIds={selectedIds}
+              handleCheckboxChange={handleCheckboxChange}
+            />
+          ))}
+        </div>
+            const examDate = resitExamIdList.find(resit => resit.id === item.resitExamId)?.examDate || 'N/A';
+            if (examDate !== 'N/A') {
+              const { date, time } = splitDateTime(examDate);
+              return { date, time };
+            }
+            return { date: 'N/A', time: 'N/A' };
+            })()}
+            sendSplitDateTime={(dateTime) => console.log('Received split date and time:', dateTime)} // Example of sending back the result
+           // Assuming resitExamIdList has a time property
+          courseRoom={"N/A"} // Assuming no room is given; replace as needed
+          selectedIds={selectedIds}
+          handleCheckboxChange={handleCheckboxChange}
+        />
+      ))}
+
+      </div> */}
+      {(Array.isArray(onSearchResult) && onSearchResult.length > 0 ? onSearchResult : coursesListData).map((item) => (
         <RowOfTable
-          key={`${item.CourseId}-${item.resitExamId}`}
-          CourseId={item.CourseId}
-          courseName={item.courseName}
-          courseCode={item.resitExamId} // Adjust if 'courseCode' is meant to be something else
-          courseInstructor={item.instructor}
+          key={`${item.id}-${item.resitExamId}`}
+          CourseId={item.id}
+          courseName={item.name}
+            courseInstructor={item.instructor}
+            ExamDate={(() => {
+            const examDate = resitExamIdList.find(resit => resit.id === item.resitExamId)?.examDate || 'N/A';
+            if (examDate !== 'N/A') {
+              const { date, time } = splitDateTime(examDate);
+              return { date, time };
+            }
+            return { date: 'N/A', time: 'N/A' };
+            })()}
+            sendSplitDateTime={(dateTime) => console.log('Received split date and time:', dateTime)} // Example of sending back the result
+           // Assuming resitExamIdList has a time property
           courseRoom={"N/A"} // Assuming no room is given; replace as needed
           selectedIds={selectedIds}
           handleCheckboxChange={handleCheckboxChange}
@@ -110,25 +209,26 @@ export default function Home() {
       ))}
 
       </div>
-      <form className='AddManulay' >
+
+      <form className={`AddManulay ${Addmanualyopener ? 'isgrid' : 'isnone'}`} id="AddManulay" method="post" action="">
         <h6> Add an new item</h6>
         <label htmlFor="CourseCode">Course Code</label>
-        <input type='text' id='CourseCode' name='CourseCode' />
+        <input type='text' value={CourseCode} onChange={(e)=>setCourseCode(e.target.value)} id='CourseCode' name='CourseCode' />
         <label htmlFor="CourseName">Course Name</label>
-        <input type='text' id='CourseName' name='CourseName' />
+        <input type='text' value={CourseName} onChange={(e)=>setCourseName(e.target.value)} id='CourseName' name='CourseName' />
         <label htmlFor="Lecture">Lecture</label>
-        <input type='text' id='Lecture' name='Lecture' />
+        <input type='text' value={Instructor} onChange={(e)=>setInstructor(e.target.value)} id='Lecture' name='Lecture' />
         <label htmlFor="Date">Date</label>
-        <input type='text' id='Date' name='Date' />
+        <input type='text'  id='Date' name='Date' />
         <label htmlFor="Time">Time</label>
-        <input type='text' id='Time' name='Time' />
+        <input type='text'  id='Time' name='Time' />
         <label htmlFor="ClassRoom">Class Room</label>
-        <input type='text' id='ClassRoom' name='ClassRoom' />
-        <label htmlFor="Department">Course Code</label>
-        <input type='text' id='Department' name='Department' />
-        <button>Cancel</button>
+        <input type='text'  id='ClassRoom' name='ClassRoom' />
+        <label htmlFor="Department">Department</label>
+        <input type='text' value={Department} onChange={(e)=>setDepartment(e.target.value)} id='Department' name='Department' />
+        <button type='button' onClick={()=>setAddmanualyopener(false)}>Cancel</button> 
         <button>Next </button>
-         <button type='submit'></button>
+         <button style={{gridColumn:' span 4',backgroundColor:'green',width:'100%'}} onClick={(e)=>{e.preventDefault() ;FuncPost();setAddmanualyopener(false)}} type='submit'>save </button>
       </form>
     </section>
     </>

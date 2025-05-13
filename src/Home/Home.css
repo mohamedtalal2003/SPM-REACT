@@ -138,8 +138,14 @@
  .theListofcourses button{
     width: 20%;
  }
- .AddManulay{
+ .isgrid{
+   display: grid;
+ }
+ .isnone{
    display: none;
+ }
+ #AddManulay{
+
    
    grid-template-columns: repeat(4,1fr);
    grid-template-rows:  repeat(10,1fr);

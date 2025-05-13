@@ -70,3 +70,63 @@
     height: 25px;
     width: 20%;
 }
+
+.theListofcourses .isgrid{
+   display: grid;
+ }
+ .theListofcourses .isnone{
+   display: none;
+ }
+  .theListofcourses #AddManulay{
+
+   
+   grid-template-columns: repeat(4,1fr);
+   grid-template-rows:  repeat(10,1fr);
+   position: absolute;
+   width: 60%;
+   background-color: #fdfcfc;
+   color: #000;
+   border-radius: 10px;
+   border: solid 0px #e9ecef;
+   box-shadow: #000000 -1px 1px 5px 0px;
+   padding: 0 20px;
+   justify-items: center;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+ }
+ .theListofcourses .AddManulay h6{
+   grid-row: 1;
+   grid-column: span 4;
+   text-align: center;
+ }
+ .theListofcourses .AddManulay label{
+   grid-column: span 1;
+   grid-row: span 1;
+   left: 0;
+   text-align: left;
+   width: 70%;
+ }
+ .theListofcourses .AddManulay input{
+   grid-column: span 3;
+   grid-row: span 1;
+   width: 85%;
+ }
+ .theListofcourses .AddManulay button{
+   grid-column: span 2;
+   grid-row: span 1;
+   width: 80%;
+
+   background-color: red;
+   border-radius: 5px;
+   border: solid 0px red;
+ }
+ .cheakboxclassName{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+ }
+  .cheakboxclassName input{
+    width: 15px;
+    height: 15px;
+    margin: 0;
+  }

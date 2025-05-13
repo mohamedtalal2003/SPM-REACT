@@ -18,6 +18,9 @@ import ResitExamEntranceInstructor from './Login/ResitExamEntranceInstructor';
 import ResitExam from './Login/ResitExam';
 import InstructorLayout from './InstructorLayout';
 import LetterGrades from './LetterGrades/LetterGrades'
+import AnnounceLetterGrade from './LetterGrades/AnnounceLetterGrade';
+import AnnounceNewLetterGrade from './LetterGrades/AnnounceNewLetterGrade';
+import Approvals from './Approvals/Approvals';
 function App() {
   return (
     <BrowserRouter>
@@ -42,7 +45,11 @@ function App() {
         </Route>
         <Route element={<InstructorLayout/>}>
           <Route path="/instructor" element={<HomeForInstructor />} />
-          <Route path='/lettergrades' element={<LetterGrades/>} />
+          <Route path='/lettergrades' element={<LetterGrades/>} >
+          <Route index element={<AnnounceLetterGrade/>} />
+          <Route path='announcenewlettergrade' element={<AnnounceNewLetterGrade/>} />
+          </Route>
+          <Route path='/approvals' element={<Approvals/>} />
         </Route>
       </Routes>
     </BrowserRouter>

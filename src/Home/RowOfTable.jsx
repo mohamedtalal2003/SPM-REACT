@@ -12,8 +12,8 @@ function RowOfTable(props) {
     </div>
     <p className="courseName">{props.courseName}</p>
     <p className="courseInstructor">{props.courseInstructor}</p>
-    <time dateTime="2025-04-20">April 20, 2025</time>
-    <time dateTime="10:00">10:00 AM</time>
+    <time dateTime={props.ExamDate.date}>{props.ExamDate.date}</time>
+    <time dateTime={props.ExamDate.time}>{props.ExamDate.time}</time>
     <p className="ClassRooms">{props.courseRoom}</p>
   </div>
   )

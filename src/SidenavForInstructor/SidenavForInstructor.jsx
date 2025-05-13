@@ -22,7 +22,7 @@ function SidenavForInstructor() {
       </li>
       <li>
         <i className="bi bi-clipboard-check"></i>
-        <Link to="/Departments" >Approvel</Link>
+        <Link to="/approvals" >Approvel</Link>
       </li>
       <li>
         <i className="bi bi-clipboard-check"></i>
