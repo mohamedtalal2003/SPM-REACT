@@ -9,6 +9,7 @@ export default function CoursesRow({
   courseTime,
   dateModified,
 }) {
+  
   return (
     <div className="rowoftable" id={`rowoftable-${CourseId}`}>
       <div className="cheakboxclassName">

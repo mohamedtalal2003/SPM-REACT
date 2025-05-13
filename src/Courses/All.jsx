@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function All() {
   const [Addmanualyopener, setAddmanualyopener] = useState(false);
   const [coursesListData, setCoursesListData] = useState([]); // State to hold course data
+   const [onSearchResult, setOnSearchResult] = useState('');
 
   // Function to fetch course data
   const GetFunc = () => {
@@ -19,7 +20,17 @@ export default function All() {
         console.error('Error fetching data:', error);
       });
   };
-
+   const [selectedIds, setSelectedIds] = useState([]); // State to hold selected course IDs
+   const handleCheckboxChange = (event) => {
+    const id = event.target.value;
+    console.log(id);
+    if (event.target.checked) {
+      // Add id
+      setSelectedIds((prev) => [...prev, id]);
+    } else {
+      // Remove id
+      setSelectedIds((prev) => prev.filter((item) => item !== id));
+    }}
   // Fetch data when the component mounts
   useEffect(() => {
     GetFunc();
@@ -36,7 +47,7 @@ export default function All() {
           <i className="bi bi-filter"></i>
           filter
         </button>
-        <SearchBar />
+        <SearchBar List={coursesListData} onSearchResult={setOnSearchResult}/>
 
         <button
           onClick={() => setAddmanualyopener(true)}
@@ -61,7 +72,7 @@ export default function All() {
       </nav>
       <div className="Thetable Thetableofcourses" id="Thetable">
         {/* Iterate over coursesListData */}
-        {coursesListData.map((item) => (
+     {(Array.isArray(onSearchResult) && onSearchResult.length > 0 ? onSearchResult : coursesListData).map((item) => (
           <CoursesRow
             key={item.id}
             CourseId={item.id}
